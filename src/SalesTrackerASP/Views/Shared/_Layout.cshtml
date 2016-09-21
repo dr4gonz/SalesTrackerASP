@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div class="topnav">
+        <ul>
+            <li>@Html.ActionLink("Index","Home")</li>
+        </ul>
+        <ul>
+            <li>@Html.ActionLink("Index", "Account")</li>
+        </ul>
+    </div>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>
