@@ -10,6 +10,7 @@ namespace SalesTrackerASP.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Item> Items { get; set; }
+        public DbSet<Sale> Sales { get; set; }
          public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 

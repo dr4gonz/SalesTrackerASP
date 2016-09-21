@@ -16,6 +16,7 @@ namespace SalesTrackerASP.Models
         public string Name { get; set; }
         public decimal Cost { get; set; }
         public decimal Margin { get; set; }
+        public virtual IEnumerable<ItemsSales> ItemsSales { get; set; }
         public decimal SalePrice
         {
             get
