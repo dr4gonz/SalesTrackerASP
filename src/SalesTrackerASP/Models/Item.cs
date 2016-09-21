@@ -23,5 +23,13 @@ namespace SalesTrackerASP.Models
                 return Cost + Margin;
             }
         }
+        public Item(string name, int count, decimal cost, decimal margin)
+        {
+            Name = name;
+            Count = count;
+            Cost = cost;
+            Margin = margin;
+        }
+        public Item() { }
     }
 }

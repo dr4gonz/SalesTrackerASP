@@ -1,0 +1,52 @@
+﻿@model IEnumerable<SalesTrackerASP.Models.Item>
+
+@{
+    ViewData["Title"] = "Inventory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Inventory</h1>
+<table class="itemTable">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Margin</th>
+        <th>Sale Price</th>
+    </tr>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Name</td>
+        <td>@item.Count</td>
+        <td>$ @item.Cost</td>
+        <td>$ @item.Margin</td>
+        <td>$ @item.SalePrice</td>
+    </tr>
+}
+</table>
+
+<table class="stagingTable">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Cost</th>
+        <th>Margin</th>
+        <th>Sale Price</th>
+    </tr>
+</table>
+
+<h3>Add New Item</h3>
+<form action="NewItem" class="new-item">
+    <label for="newName">Name: </label>
+    <input type="text" name="newName" />
+    <label for="newQuantity">Quantity: </label>
+    <input type="number" name="newQuantity" />
+    <label for="newCost">Cost: </label>
+    <input type="number" name="newCost" step=".01" />
+    <label for="newMargin">Margin: </label>
+    <input type="number" name="newMargin" step=".01"/>
+    <button type="submit">Submit</button>
+</form>
+
+<script src="~/js/Inventory.js"></script>

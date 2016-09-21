@@ -4,6 +4,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <link href="~/css/StyleSheet.css" rel="stylesheet" type="text/css" />
+    <script src="https://code.jquery.com/jquery-3.1.0.js" integrity="sha256-slogkvB1K3VOkzAI8QITxV3VzpOnkeNVsKvtkYLMjfk=" crossorigin="anonymous"></script>
     <title>@ViewBag.Title</title>
 </head>
 <body>
@@ -14,6 +15,7 @@
         <ul>
             <li>@Html.ActionLink("Account", "Index", "Account")</li>
         </ul>
+        
     </div>
     <div>
         @RenderBody()
