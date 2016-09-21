@@ -1,2 +1,24 @@
 ﻿body {
+    margin: 0;
+}
+.topnav {
+    display: flex;
+    justify-content: space-between;
+    background-color: brown;
+}
+
+.topnav ul {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+}
+
+.topnav ul li a {
+    padding: 1em;
+    color: black;
+    text-decoration: none;
+}
+
+.topnav ul li a:hover {
+    background-color: maroon;
 }
