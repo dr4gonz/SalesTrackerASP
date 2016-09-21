@@ -74,19 +74,26 @@
         });
     })
     $('.edit-item input').keyup(function (event) {
-        console.log("yes!");
         event.preventDefault();
         var itemId = $("#editFormItemId").val();
-        var rowName; 
+        var rowName;
+        var modifier = "";
         if ($(this).attr("id") == "newName") {
             rowName = "#name-";
         }
         else if ($(this).attr("id") == "newQuantity") {
             rowName = "#count-";
         }
+        else if ($(this).attr("id") == "newCost") {
+            rowName = "#cost-";
+            modifier += "$ ";
+        }
+        else if ($(this).attr("id") == "newMargin") {
+            rowName = "#margin-";
+            modifier += "$ ";
+        }
         var selectorString = rowName + itemId;
-        console.log(selectorString);
-        $(selectorString).text($(this).val());
+        $(selectorString).text(modifier + $(this).val());
     });
 
 });
