@@ -5,6 +5,7 @@
     display: flex;
     justify-content: space-between;
     background-color: brown;
+    width: 100%;
 }
 
 .topnav ul {
@@ -22,3 +23,7 @@
 .topnav ul li a:hover {
     background-color: maroon;
 }
+.edit-item {
+    display: none;
+}
+

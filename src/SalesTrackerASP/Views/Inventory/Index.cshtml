@@ -13,16 +13,19 @@
         <th>Cost</th>
         <th>Margin</th>
         <th>Sale Price</th>
+        <th> </th>
+        <th></th>
     </tr>
 @foreach (var item in Model)
 {
         <tr id="itemRow-@item.Id">
-            <td>@item.Name</td>
-            <td>@item.Count</td>
-            <td>$ @item.Cost</td>
-            <td>$ @item.Margin</td>
-            <td>$ @item.SalePrice</td>
+            <td id="name-@item.Id">@item.Name</td>
+            <td id="count-@item.Id">@item.Count</td>
+            <td id="cost-@item.Id">$ @item.Cost</td>
+            <td id="margin-@item.Id">$ @item.Margin</td>
+            <td id="salePrice-@item.Id">$ @item.SalePrice</td>
             <td><button class="deleteButton" id="@item.Id">Delete</button></td>
+            <td><button class="editButton" id="@item.Id">Edit</button></td>
         </tr>
 }
 </table>
@@ -38,6 +41,19 @@
     <label for="newMargin">Margin: </label>
     <input type="number" name="newMargin" step=".01"/>
     <button type="submit">Submit</button>
+</form>
+<h3>Edit Item</h3>
+<form action="EditItem" class="edit-item">
+    <label for="newName">Name: </label>
+    <input type="text" name="newName" id="newName"/>
+    <label for="newQuantity">Quantity: </label>
+    <input type="number" name="newQuantity" id="newQuantity"/>
+    <label for="newCost">Cost: </label>
+    <input type="number" name="newCost" step=".01" id="newCost" />
+    <label for="newMargin">Margin: </label>
+    <input type="number" name="newMargin" step=".01" id="newMargin"/>
+    <button type="submit">Submit</button>
+    <input type="hidden" id='editFormItemId'/>
 </form>
 
 <script src="~/js/Inventory.js"></script>
