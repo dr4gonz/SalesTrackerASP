@@ -9,6 +9,6 @@ namespace SalesTrackerASP.Models
 {
     public class ApplicationUser : IdentityUser
     {
-
+        Dictionary<Item, int> Sales = new Dictionary<Item, int>();
     }
 }

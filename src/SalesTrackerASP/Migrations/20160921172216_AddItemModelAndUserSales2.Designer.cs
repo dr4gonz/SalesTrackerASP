@@ -8,9 +8,10 @@ using SalesTrackerASP.Models;
 namespace SalesTrackerASP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160921172216_AddItemModelAndUserSales2")]
+    partial class AddItemModelAndUserSales2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
