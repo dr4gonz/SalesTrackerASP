@@ -35,5 +35,12 @@ namespace SalesTrackerASP.Controllers
             _db.SaveChanges();
             return Json(newItem);
         }
+        [HttpPost]
+        public void DeleteItem(int id)
+        {
+            var item = _db.Items.FirstOrDefault(i => i.Id == id);
+            _db.Items.Remove(item);
+            _db.SaveChanges();
+        }
     }
 }
