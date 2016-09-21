@@ -16,25 +16,15 @@
     </tr>
 @foreach (var item in Model)
 {
-    <tr id="item" @item.Id>
-        <td>@item.Name</td>
-        <td>@item.Count</td>
-        <td>$ @item.Cost</td>
-        <td>$ @item.Margin</td>
-        <td>$ @item.SalePrice</td>
-        <td>@Html.ActionLink("Delete", "DeleteItem","Inventory", new { id = @item.Id }, new { @class = "btn btn-default" })</td>
-    </tr>
+        <tr id="itemRow-@item.Id">
+            <td>@item.Name</td>
+            <td>@item.Count</td>
+            <td>$ @item.Cost</td>
+            <td>$ @item.Margin</td>
+            <td>$ @item.SalePrice</td>
+            <td><button class="deleteButton" id="@item.Id">Delete</button></td>
+        </tr>
 }
-</table>
-
-<table class="stagingTable">
-    <tr>
-        <th>Name</th>
-        <th>Quantity</th>
-        <th>Cost</th>
-        <th>Margin</th>
-        <th>Sale Price</th>
-    </tr>
 </table>
 
 <h3>Add New Item</h3>

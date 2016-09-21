@@ -17,7 +17,21 @@
                                     '<td>$ ' + result.salePrice + '</td></tr>';
                 $('.itemTable').append(resultRow);
             }
-
+        });
+    });
+    $('.deleteButton').click(function (event) {
+        event.preventDefault();
+        var itemId = $(this).attr("id");
+        var urlString = '/Inventory/DeleteItem/' + itemId;
+        console.log(itemId);
+        $.ajax({
+            url: urlString,
+            type: "POST",
+            success: function () {
+                console.log("successful deletion");
+                var rowString = '#itemRow-' + itemId
+                $(rowString).hide();
+            }
         });
     });
 });
