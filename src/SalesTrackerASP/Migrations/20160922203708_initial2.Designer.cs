@@ -8,8 +8,8 @@ using SalesTrackerASP.Models;
 namespace SalesTrackerASP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160921172216_AddItemModelAndUserSales2")]
-    partial class AddItemModelAndUserSales2
+    [Migration("20160922203708_initial2")]
+    partial class initial2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -191,6 +191,43 @@ namespace SalesTrackerASP.Migrations
                     b.ToTable("Items");
                 });
 
+            modelBuilder.Entity("SalesTrackerASP.Models.ItemsSales", b =>
+                {
+                    b.Property<int>("ItemId");
+
+                    b.Property<int>("SaleId");
+
+                    b.Property<int>("Id");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("ItemId", "SaleId");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("SaleId");
+
+                    b.ToTable("ItemsSales");
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Buyer");
+
+                    b.Property<string>("Comments");
+
+                    b.Property<string>("SalesRepId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SalesRepId");
+
+                    b.ToTable("Sales");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -226,6 +263,26 @@ namespace SalesTrackerASP.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.ItemsSales", b =>
+                {
+                    b.HasOne("SalesTrackerASP.Models.Item", "Item")
+                        .WithMany("ItemsSales")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("SalesTrackerASP.Models.Sale", "Sale")
+                        .WithMany("ItemsSales")
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.Sale", b =>
+                {
+                    b.HasOne("SalesTrackerASP.Models.ApplicationUser", "SalesRep")
+                        .WithMany()
+                        .HasForeignKey("SalesRepId");
                 });
         }
     }

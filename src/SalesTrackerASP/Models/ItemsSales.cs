@@ -12,8 +12,17 @@ namespace SalesTrackerASP.Models
     {
         [Key]
         public int Id { get; set; }
-        public virtual Sale Sale { get; set; }
-        public virtual Item Item { get; set; }
+        public Sale Sale { get; set; }
+        public Item Item { get; set; }
         public int Quantity { get; set; }
+
+        public ItemsSales(Sale sale, Item item, int quantity, int id = 0)
+        {
+            Sale = sale;
+            Item = item;
+            Quantity = quantity;
+            Id = id;
+        }
+        public ItemsSales() { }
     }
 }

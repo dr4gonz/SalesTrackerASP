@@ -15,6 +15,13 @@ namespace SalesTrackerASP.Models
         public string Buyer { get; set; }
         public string Comments { get; set; }
         public virtual ApplicationUser SalesRep { get; set; }
-        public virtual IEnumerable<ItemsSales> ItemsSales { get; set; }
+        public virtual ICollection<ItemsSales> ItemsSales { get; set; }
+
+        public Sale(string buyer, string comments, ApplicationUser salesRep)
+        {
+            Buyer = buyer;
+            Comments = comments;
+            SalesRep = salesRep;
+        }
     }
 }

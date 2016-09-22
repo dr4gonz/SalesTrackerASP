@@ -8,8 +8,8 @@ using SalesTrackerASP.Models;
 namespace SalesTrackerASP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160921171836_AddItemModelAndUserSales")]
-    partial class AddItemModelAndUserSales
+    [Migration("20160922210137_RemoveExplicitForeignKeys")]
+    partial class RemoveExplicitForeignKeys
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -173,6 +173,63 @@ namespace SalesTrackerASP.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
+            modelBuilder.Entity("SalesTrackerASP.Models.Item", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<decimal>("Cost");
+
+                    b.Property<int>("Count");
+
+                    b.Property<decimal>("Margin");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Items");
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.ItemsSales", b =>
+                {
+                    b.Property<int>("ItemId");
+
+                    b.Property<int>("SaleId");
+
+                    b.Property<int>("Id");
+
+                    b.Property<int?>("ItemId1");
+
+                    b.Property<int>("Quantity");
+
+                    b.HasKey("ItemId", "SaleId");
+
+                    b.HasIndex("ItemId1");
+
+                    b.HasIndex("SaleId");
+
+                    b.ToTable("ItemsSales");
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.Sale", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Buyer");
+
+                    b.Property<string>("Comments");
+
+                    b.Property<string>("SalesRepId");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SalesRepId");
+
+                    b.ToTable("Sales");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityRole")
@@ -208,6 +265,25 @@ namespace SalesTrackerASP.Migrations
                         .WithMany("Roles")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.ItemsSales", b =>
+                {
+                    b.HasOne("SalesTrackerASP.Models.Item", "Item")
+                        .WithMany("ItemsSales")
+                        .HasForeignKey("ItemId1");
+
+                    b.HasOne("SalesTrackerASP.Models.Sale", "Sale")
+                        .WithMany("ItemsSales")
+                        .HasForeignKey("SaleId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("SalesTrackerASP.Models.Sale", b =>
+                {
+                    b.HasOne("SalesTrackerASP.Models.ApplicationUser", "SalesRep")
+                        .WithMany()
+                        .HasForeignKey("SalesRepId");
                 });
         }
     }

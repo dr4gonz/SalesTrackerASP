@@ -1,7 +1,6 @@
 ﻿$(document).ready(function () {
     $('.new-item').submit(function (event) {
         event.preventDefault();
-        console.log("js submit fired");
         $.ajax({
             url:  '/Inventory/NewItem',
             type: "POST",

@@ -10,23 +10,34 @@ Sales Controller
 <button class="newSaleButton">New Sale</button>
 <form action="NewSale" class="newSale">
     <label for="buyer">Buyer</label>
-    <input type="text" name="buyer" />
+    <input type="text" name="buyer" id="buyer"/>
     <label for="comments">Comments</label>
-    <input type="text" name="comments" />
+    <input type="text" name="comments" id="comments"/>
 
     <button type='submit'>Submit</button>
 </form>
 <hr />
 <h4>Add Item to Current Sale</h4>
-<form class='addItemToSaleForm'>
-    <select>
+<form action="NewSaleItems" class='addItemToSaleForm'>
+    <select id="itemSelector">
         @foreach(var item in ViewBag.items)
         {
-            <option value="@item.Id">@item.Name</option>
+            <option id="selectItem-@item.Id" value="@item.Id">@item.Name</option>
         }
     </select>
     <label for="quantity">Quantity</label>
-    <input name="quantity" type="number" />
+    <input name="quantity" type="number" id="quantity" />
+    <button type="submit">Add Item</button>
 
 </form>
+
+<div id="buyerName"></div>
+<div id="saleComments"></div>
+<table id="itemList">
+    <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+    </tr>
+</table>
+<button id="saleSubmit">Submit</button>
 <script src="~/js/Sales.js"></script>

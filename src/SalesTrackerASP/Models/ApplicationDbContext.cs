@@ -11,6 +11,7 @@ namespace SalesTrackerASP.Models
     {
         public DbSet<Item> Items { get; set; }
         public DbSet<Sale> Sales { get; set; }
+        public DbSet<ItemsSales> ItemsSales { get; set; }
          public ApplicationDbContext(DbContextOptions options) : base(options)
         {
 

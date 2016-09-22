@@ -8,8 +8,8 @@ using SalesTrackerASP.Models;
 namespace SalesTrackerASP.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20160921225301_ItemsSalesRelationship")]
-    partial class ItemsSalesRelationship
+    [Migration("20160922210558_RemoveItemId1")]
+    partial class RemoveItemId1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
